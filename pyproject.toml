@@ -3,16 +3,16 @@ requires = ["setuptools>=68.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "fastmcp-azure-boilerplate"
+name = "fastmcp-hybrid-auth"
 version = "1.0.0"
-description = "Production-ready FastMCP server boilerplate with Azure Entra ID authentication"
+description = "Production-ready FastMCP server with Azure Entra ID authentication and Keycloak authorization for hybrid cloud-on-premise deployments"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
-    {name = "Your Name", email = "your.email@example.com"}
+    {name = "Tobias Bettinger", email = "your.email@example.com"}
 ]
-keywords = ["mcp", "fastmcp", "azure", "entra-id", "oauth", "llm", "ai"]
+keywords = ["mcp", "fastmcp", "azure", "entra-id", "keycloak", "oauth", "oauth2", "token-exchange", "authorization", "authentication", "hybrid-auth", "rbac", "llm", "ai"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -50,10 +50,10 @@ redis = [
 mcp-server = "src.server:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/fastmcp-azure-boilerplate"
-Documentation = "https://github.com/yourusername/fastmcp-azure-boilerplate#readme"
-Repository = "https://github.com/yourusername/fastmcp-azure-boilerplate"
-Issues = "https://github.com/yourusername/fastmcp-azure-boilerplate/issues"
+Homepage = "https://github.com/tobias-bettinger/fastmcp-hybrid-auth"
+Documentation = "https://github.com/tobias-bettinger/fastmcp-hybrid-auth#readme"
+Repository = "https://github.com/tobias-bettinger/fastmcp-hybrid-auth"
+Issues = "https://github.com/tobias-bettinger/fastmcp-hybrid-auth/issues"
 
 [tool.setuptools]
 package-dir = {"" = "."}

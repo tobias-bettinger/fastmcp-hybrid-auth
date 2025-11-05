@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  # FastMCP Server
+  # FastMCP Hybrid Auth Server
   mcp-server:
     build:
       context: .
       target: development
-    container_name: fastmcp-server
+    container_name: fastmcp-hybrid-auth-server
     ports:
       - "${PORT:-8000}:8000"
     environment:
@@ -39,7 +39,7 @@ services:
   # Redis for token storage
   redis:
     image: redis:7-alpine
-    container_name: fastmcp-redis
+    container_name: fastmcp-hybrid-auth-redis
     ports:
       - "6379:6379"
     volumes:

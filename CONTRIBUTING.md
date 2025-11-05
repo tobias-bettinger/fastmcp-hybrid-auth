@@ -8,7 +8,8 @@ This guide helps you customize and extend this boilerplate for your specific use
 
 1. **Clone the repository** (if you haven't already)
    ```bash
-   cd qnagent
+   git clone https://github.com/tobias-bettinger/fastmcp-hybrid-auth.git
+   cd fastmcp-hybrid-auth
    ```
 
 2. **Run setup script**

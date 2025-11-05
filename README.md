@@ -53,8 +53,9 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for detailed architecture docum
 ### 1. Clone and Setup
 
 ```bash
-# Navigate to your project directory
-cd qnagent
+# Clone the repository
+git clone https://github.com/tobias-bettinger/fastmcp-hybrid-auth.git
+cd fastmcp-hybrid-auth
 
 # Run the setup script
 ./scripts/setup.sh
@@ -223,7 +224,7 @@ See [docs/KEYCLOAK_SETUP.md](docs/KEYCLOAK_SETUP.md) for complete setup instruct
 ## Project Structure
 
 ```
-qnagent/
+fastmcp-hybrid-auth/
 ├── src/
 │   ├── __init__.py
 │   ├── server.py                    # Main server entry point
