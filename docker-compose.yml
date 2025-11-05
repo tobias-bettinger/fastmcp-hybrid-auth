@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  # FastMCP Server
+  mcp-server:
+    build:
+      context: .
+      target: development
+    container_name: fastmcp-server
+    ports:
+      - "${PORT:-8000}:8000"
+    environment:
+      - ENVIRONMENT=${ENVIRONMENT:-development}
+      - DEBUG=${DEBUG:-false}
+      - HOST=0.0.0.0
+      - PORT=8000
+      - TRANSPORT=${TRANSPORT:-http}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - LOG_FORMAT=${LOG_FORMAT:-json}
+      - ENABLE_AUTH=${ENABLE_AUTH:-true}
+      - AZURE_CLIENT_ID=${AZURE_CLIENT_ID}
+      - AZURE_CLIENT_SECRET=${AZURE_CLIENT_SECRET}
+      - AZURE_TENANT_ID=${AZURE_TENANT_ID}
+      - AZURE_BASE_URL=${AZURE_BASE_URL:-http://localhost:8000}
+      - AZURE_REQUIRED_SCOPES=${AZURE_REQUIRED_SCOPES:-read,write}
+      - JWT_SIGNING_KEY=${JWT_SIGNING_KEY}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - STORAGE_ENCRYPTION_KEY=${STORAGE_ENCRYPTION_KEY}
+    volumes:
+      - ./src:/app/src
+      - ./logs:/app/logs
+    depends_on:
+      - redis
+    restart: unless-stopped
+    networks:
+      - mcp-network
+
+  # Redis for token storage
+  redis:
+    image: redis:7-alpine
+    container_name: fastmcp-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    command: redis-server --appendonly yes
+    restart: unless-stopped
+    networks:
+      - mcp-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  redis-data:
+    driver: local
+
+networks:
+  mcp-network:
+    driver: bridge
